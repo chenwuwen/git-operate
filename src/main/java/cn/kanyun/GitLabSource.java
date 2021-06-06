@@ -28,18 +28,20 @@ public class GitLabSource {
     private static Logger logger = LoggerFactory.getLogger(GitLabSource.class);
 
     /**
-     * 获取源Gitlab的仓库列表
+     * 获取源Gitlab的仓库列表,注意返回的总项目数量
      * @return
      */
     public static List<GitlabProject> getProject() {
-
+        
+//         此变量最终未使用
         ArrayList<Map<String, String>> pros = new ArrayList<>();
         GitlabAPI api = GitlabAPI.connect(SOURCE_GITLAB_DOMAIN, SOURCE_GITLAB_TOKEN);
         List<GitlabProject> allProjects = api.getAllProjects();
         logger.info("仓库数量：{}", allProjects.size());
         for (GitlabProject project : allProjects) {
 //           得到项目的 NameSpace
-            project.getNamespace().getPath();
+            String nameSpace = project.getNamespace().getPath();
+            logger.info("{} -> 所属空间 {}",project.getName(),nameSpace);
             HashMap<String, String> result = new HashMap<String, String>();
 //            浏览器地址
             logger.info(project.getWebUrl());
