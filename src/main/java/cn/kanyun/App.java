@@ -39,7 +39,7 @@ public class App {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-//        从源Gitlab获取仓库列表
+//        从源Gitlab获取仓库列表(注意默认获取的列表是未过滤的列表)
         List<GitlabProject> projects = GitLabSource.getProject();
 //        源Git认证
         CredentialsProvider sourceCredential = GitOps.createCredential(SOURCE_GIT_USERNAME, SOURCE_GIT_PASSWORD);
