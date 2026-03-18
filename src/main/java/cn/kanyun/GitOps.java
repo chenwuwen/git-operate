@@ -153,7 +153,7 @@ public class GitOps {
 
 
     /**
-     * git 迁移,虽然是git clone命令,但是下载的文件,并不是你能直接使用文件,而是需要push到新仓库才能用(如果是迁移git仓库使用该方式替代上面的fromCloneRepository方法)
+     * git 迁移,虽然是git clone命令,但是下载的文件,并不是你能直接使用文件,而是需要push到新仓库才能用(如果你的目的是迁移git仓库,那么请使用该方法，而不是使用上面的fromCloneRepository方法)
      * https://blog.csdn.net/kanyun123/article/details/116749871 。
      * @param remoteRepoPath
      * @param localRepoPath
