@@ -123,9 +123,10 @@ public class GitOps {
             branch = git.getRepository().getBranch();
         }
         git.push()
-                .setPushAll() // push所有分支？
+                .setPushAll() // push所有分支
+                .setPushTags() // push所有tag
                 .setCredentialsProvider(provider)
-                .setRemote("origin").setRefSpecs(new RefSpec(branch)).call();
+                .setRemote("origin").call();
     }
 
     /**
@@ -169,7 +170,7 @@ public class GitOps {
         Git git = null;
         try {
             git = cloneCommand.setURI(remoteRepoPath) //设置远程URI
-                    .setBare(true)  //具体可以查询 git clone --bare
+                    .setBare(true)  //下载所有分支及tag的保证(具体可以查询 git clone --bare)
                     .setCredentialsProvider(usernamePasswordCredentialsProvider)
                     .setDirectory(new File(localRepoPath)) //设置下载存放路径
                     .call();
